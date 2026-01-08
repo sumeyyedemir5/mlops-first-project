@@ -1,0 +1,23 @@
+name: Docker Build Test
+
+on:
+  push:
+    branches: [ "main" ]  # Sadece main dalına push yapınca çalışır
+
+jobs:
+  build:
+    runs-with: ubuntu-latest
+
+    steps:
+    - name: Kodlari GitHub'dan cek
+      uses: actions/checkout@v4
+
+    - name: Docker Imajini Build Et
+      run: |
+        docker build -t ml-api-image:latest .
+
+    - name: Test Calistirmasi
+      run: |
+        docker run --detach -p 8080:80 ml-api-image:latest
+        sleep 5
+        curl http://localhost:8080/  # API'nin ayakta olduğunu test et
