@@ -1,45 +1,102 @@
-# 🚀 End-to-End MLOps: House Price Prediction Service
+#🚀 End-to-End MLOps: House Price Prediction Service
 
-This repository demonstrates a complete MLOps pipeline, covering everything from machine learning model training and experiment tracking to containerization and automated CI/CD workflows.
+This repository demonstrates a production-grade MLOps pipeline, covering the entire lifecycle from data versioning and experiment tracking to automated testing and cloud deployment.
 
-### 🛠 Tech Stack
-Language: Python 3.12
+###🛠 Tech Stack
 
-Machine Learning: Scikit-Learn (Linear Regression & Random Forest)
+* Language: Python 3.12
 
-API Framework: FastAPI & Uvicorn
+* Machine Learning: Scikit-Learn
 
-Containerization: Docker
+* API Framework: FastAPI & Uvicorn
 
-Experiment Tracking: MLflow
+* Data Versioning: DVC (Data Version Control)
 
-CI/CD: GitHub Actions
+* Testing: Pytest & HTTPX
 
-Container Registry: Docker Hub
+* Containerization: Docker
 
-### 🏗 System Architecture
-Experimentation: Models are trained using train.py, with all parameters and metrics (R2 Score) logged via MLflow.
+* Experiment Tracking: MLflow
 
-Containerization: The application and its environment are packaged into a Docker image for consistent deployment.
+* CI/CD: GitHub Actions
 
-Automation (CI): Every push to the main branch triggers a GitHub Action that builds and tests the Docker image.
+* Cloud Deployment: Google Cloud Run
 
-Deployment (CD): The verified image is automatically pushed to Docker Hub, making it ready for production.
+* Container Registry: Docker Hub & Artifact Registry
 
-### 🚀 Quick Start (Usage)
-You don't need Python or any libraries installed locally. You can run the entire service using Docker:
+###🏗 System Architecture
+
+1. Data Management: Training data is versioned using DVC, ensuring reproducibility across different environments.
+
+
+2. Experimentation: Models are trained with train.py, logging metrics (R2 Score) and parameters via MLflow.
+
+
+3. Quality Assurance: Automated unit tests using Pytest validate API logic and data validation before any deployment.
+
+
+4. CI/CD Pipeline: Every push to main triggers a GitHub Action that:
+
+
+*  Lints and tests the code.
+
+*  Builds a Docker image.
+
+*  Pushes the verified image to Docker Hub and Google Artifact Registry.
+
+
+5. Cloud Serving: The service is deployed on Google Cloud Run, providing a scalable, serverless production environment.
+
+###🚀 Live Demo
+
+The service is currently live and can be reached at: 👉 https://house-price-api-324096341868.us-central1.run.app/docs
+
+###💻 Usage Guide
+
+**Running with Docker (Local)**
+
+You can run the entire service without installing Python:
 
 ```
-#Pull and run the image directly from Docker Hub
+# Pull and run the image directly from Docker Hub
 docker run -p 8080:80 sumeyyedemir/ml-api-image:v1
 ```
 
-Once the container is running, test the prediction endpoint: http://localhost:8080/tahmin?m2=120
+Test the prediction: http://localhost:8080/tahmin?m2=120
 
-### 📊 Experiment Tracking with MLflow
+**Data Versioning (DVC)**
 
-To review model performances and compare different training runs:
+To pull the latest data version:
 
-``` mlflow ui ```
+```
+dvc pull
+```
+**Running Tests**
 
-Then visit http://localhost:5000 in your browser.
+To ensure the API is working correctly:
+
+```
+export PYTHONPATH=$PYTHONPATH:.
+pytest
+```
+
+**Experiment Tracking (MLflow)**
+
+To compare model runs:
+
+```
+mlflow ui
+```
+
+Then visit http://localhost:5000
+
+###📝 Key Features Added
+
+✅ Automated Testing: CI/CD pipeline fails if tests don't pass, preventing buggy deployments.
+
+
+✅ Serverless Deployment: Fully managed on Google Cloud with auto-scaling capabilities.
+
+
+✅ Data-Code Lineage: Tracking which data version produced which model version using DVC.
+
