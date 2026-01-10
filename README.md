@@ -1,8 +1,8 @@
-#🚀 End-to-End MLOps: House Price Prediction Service
+# 🚀 End-to-End MLOps: House Price Prediction Service
 
 This repository demonstrates a production-grade MLOps pipeline, covering the entire lifecycle from data versioning and experiment tracking to automated testing and cloud deployment.
 
-###🛠 Tech Stack
+### 🛠 Tech Stack
 
 * Language: Python 3.12
 
@@ -24,7 +24,7 @@ This repository demonstrates a production-grade MLOps pipeline, covering the ent
 
 * Container Registry: Docker Hub & Artifact Registry
 
-###🏗 System Architecture
+### 🏗 System Architecture
 
 1. Data Management: Training data is versioned using DVC, ensuring reproducibility across different environments.
 
@@ -47,11 +47,11 @@ This repository demonstrates a production-grade MLOps pipeline, covering the ent
 
 5. Cloud Serving: The service is deployed on Google Cloud Run, providing a scalable, serverless production environment.
 
-###🚀 Live Demo
+### 🚀 Live Demo
 
 The service is currently live and can be reached at: 👉 https://house-price-api-324096341868.us-central1.run.app/docs
 
-###💻 Usage Guide
+### 💻 Usage Guide
 
 **Running with Docker (Local)**
 
@@ -90,7 +90,7 @@ mlflow ui
 
 Then visit http://localhost:5000
 
-###📝 Key Features Added
+### 📝 Key Features Added
 
 ✅ Automated Testing: CI/CD pipeline fails if tests don't pass, preventing buggy deployments.
 
