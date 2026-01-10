@@ -38,11 +38,11 @@ This repository demonstrates a production-grade MLOps pipeline, covering the ent
 4. CI/CD Pipeline: Every push to main triggers a GitHub Action that:
 
 
-*  Lints and tests the code.
+   *  Lints and tests the code.
 
-*  Builds a Docker image.
+   *  Builds a Docker image.
 
-*  Pushes the verified image to Docker Hub and Google Artifact Registry.
+   *  Pushes the verified image to Docker Hub and Google Artifact Registry.
 
 
 5. Cloud Serving: The service is deployed on Google Cloud Run, providing a scalable, serverless production environment.
